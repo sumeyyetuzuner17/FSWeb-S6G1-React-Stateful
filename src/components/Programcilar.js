@@ -12,8 +12,9 @@ Yorumları takip edin.
 */
 
 import React from 'react';
-/* ADIM 0  */
 
+/* ADIM 0  */
+import { useState } from "react";
 
 // Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
 // JSX'te şu anda bu kuralı çiğneyen bir şey var...
