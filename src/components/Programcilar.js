@@ -19,7 +19,8 @@ import { useState } from "react";
 // Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
 // JSX'te şu anda bu kuralı çiğneyen bir şey var...
 // Export syntaxı, test kitaplığının diziyi içe aktarabilmesi için gereklidir.
-export const enIyilerListesi = [
+
+ const enIyilerListesi = [
   { id: '1', isim: 'Ada Lovelace' },
   { id: '2', isim: 'Grace Hopper' },
   { id: '3', isim: 'Evelyn Boyd Granville' },
@@ -33,12 +34,21 @@ export default function Programcilar() {
   // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
 
 	
+  const[progListe,setProgListe]=useState(enIyilerListesi);
+  const[progId,setProgId]=useState(null)
+
   const oneCikaninIsmi = () => {
     // Bunu sona bırakın!
     // Bu bir event handler değil, yardımcıdır. Kullanımını JSX'te gözlemleyin.
     // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
     // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
 	// bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+let isim=""
+  progListe.array.forEach((element) => {
+    if(element.id===progId){
+      isim=element.isim;
+    }
+  });
   };
 
   const stil = {
@@ -52,13 +62,14 @@ export default function Programcilar() {
       <h2>Programcılar</h2>
       <div className='programmers'>
         {
+        
           /* Kötü bug! 'enIyilerListesi' yerine bir state dilimini maplemeliyiz.
           // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
           // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
           " */
-          enIyilerListesi.map(dev =>
+          progListe.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.isim} <button onClick={() => {/* burada dev.id 'yi öne çıkan id'ye atayın */ }}>Kutla</button>
+              {dev.isim} <button onClick={() => {setProgId(dev.id) }}>Kutla</button>
             </div>
           )
         }
@@ -68,7 +79,8 @@ export default function Programcilar() {
           // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
           // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
           // Sabit kodlanmış false'u doğru değişkenle değiştirin.
-          false
+          
+          progId !=null
             ? `🎉 Hadi ${oneCikaninIsmi()}'ı kutlayalım! 🥳`
             : 'Harika bir programcı seçin'
         }

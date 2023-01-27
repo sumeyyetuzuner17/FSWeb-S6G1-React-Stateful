@@ -39,13 +39,22 @@ import React, { useState } from 'react'; /* STEP 0 */
 
 export default function Dondurucu() {
 /* ADIM 1 */
+
 const [döndürücüAçık,setDöndürücüAçık]=useState(true);
+
+
   const toggleDondurucu = () => {
   /* ADIM 4 */
-  setDöndürücüAçık(!döndürücüAçık);
-  };
+ setDöndürücüAçık(!döndürücüAçık);
+
+
+   };
+
+
+const[degistirbutton,setDegistirbutton]=useState("ayşe");
 
   return (
+   
     <div className='widget-spinner container'>
       <h2>Döndürücü</h2>
       {
@@ -58,5 +67,6 @@ const [döndürücüAçık,setDöndürücüAçık]=useState(true);
          Gizle {döndürücüAçık ? "Gizle" : "Göster"}
       </button>
     </div>
+
   );
 }

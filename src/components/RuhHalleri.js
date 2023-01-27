@@ -37,7 +37,7 @@ const uzgunRuhHali = 'Oldukça üzgün :(';
 
 export default function RuhHalleri() {
   /* ADIM 1 */
-	const [ruhHali,setRuhHali]=useState(0);
+	const [ruhHali,setRuhHali]=useState("");
 	
   const mutluEt = () => {
     /* ADIM 4 */
@@ -61,10 +61,10 @@ export default function RuhHalleri() {
   return (
     <div className='widget-moods container'>
       <h2>RuhHalleri</h2>
-	<div id='ruhHali' style={stil}>'Nasıl hissettiğimi bilmiyorum :-|'</div> {/* ADIM 3 */}
+	<div id='ruhHali' style={stil}>{ruhHali}</div> {/* ADIM 3 */}
       <div>
         <button id='mutluEt' onClick={mutluEt}>Mutlu Et</button>
-        <button id='uz' onClick={uZ}>Üz</button>
+        <button id='uz' onClick={uZ}>Üzgün</button>
         <button id='resetRuhHali' onClick={reset}>Reset</button>
       </div>
     </div>
